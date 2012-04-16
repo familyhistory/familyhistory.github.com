@@ -58,7 +58,7 @@ if(location.hash.substring(1).length>0){
 	// Family History tool
 	loadFamilyHistoryTool=function(){
 		s = document.createElement('script');
-		s.src = 'famHistTool.js';
+		s.src = 'familyhistory.js';
 		s.onload=function(){familyHistory.loadUI()};
 		document.body.appendChild(s);
 	}
