@@ -78,9 +78,10 @@ familyHistory={
 			//$(document.body).append($('<div class="navbar navbar-fixed-top">')).append($('<div class="navbar-inner">')).append($('<div class="container">'));
 			$('<div class="container-fluid">').appendTo($('<div class="navbar-inner">').appendTo($('<div class="navbar navbar-fixed-top">').appendTo(document.body)));
 			$('<a class="brand" href="#"> Family history</a>').appendTo($('.container-fluid'));
-			$('<a class="brand" href="javascript:console.log(9)" id="fusion" > Fusion tables</a>').appendTo($('.container-fluid'));
 			$('<div class="nav-collapse">').appendTo($('.container-fluid'));
-			$('<p class="navbar-text pull-right">Logged in as <a href="#" id="username"> ... </a><img width="35" id="photo"></p>').appendTo($('.nav-collapse'));
+			$('<ul class="nav">').appendTo($('.nav-collapse'));
+			$('<li><a class="brand" href="javascript:console.log(9)" id="fusion" > Fusion tables</a></li>').appendTo($('.nav'));
+			$('<p class="navbar-text pull-right">Logged in as <a href="#" id="username"> ... </a> <img width="35" id="photo"></p>').appendTo($('.nav-collapse'));
 			// get userInfo
 			if(!familyHistory.config.userInfo){
 				this.start.userInfoCallback=function(x){
