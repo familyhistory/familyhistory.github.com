@@ -80,7 +80,7 @@ familyHistory={
 			$('<a class="brand" href="#"> Family history</a>').appendTo($('.container-fluid'));
 			$('<div class="nav-collapse">').appendTo($('.container-fluid'));
 			$('<ul class="nav">').appendTo($('.nav-collapse'));
-			$('<li><a class="brand" href="javascript:console.log(9)" id="fusion" > Fusion tables</a></li>').appendTo($('.nav'));
+			$('<li><a class="brand" href="javascript:familyHistory.UI.fusionTables()" id="fusion" > Fusion tables</a></li>').appendTo($('.nav'));
 			$('<p class="navbar-text pull-right">Logged in as <a href="#" id="username"> ... </a> <img width="35" id="photo"></p>').appendTo($('.nav-collapse'));
 			// get userInfo
 			if(!familyHistory.config.userInfo){
@@ -102,6 +102,9 @@ familyHistory={
 				familyHistory.fusion.sql('SHOW+TABLES','familyHistory.UI.fusionTables.callback');
 				this.fusionTables.callback=function(x){
 					familyHistory.fusion.data.tables=x;
+					$('<div class="well sidebar-nav board" id="sidePanel">').appendTo($('<div class="span3">').appendTo($('<div class="row-fluid">').appendTo($('<div class="container-fluid"">').appendTo(document.body))));
+					//$('<ul class="nav nav-list" id="sidePanelList">').appendTo($('#sidePanel'));
+					//$('<li><a href="#">Link</a></li>').appendTo($('#sidePanelList'));
 					
 					}
 			}
