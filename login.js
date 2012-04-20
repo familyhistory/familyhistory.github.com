@@ -1,10 +1,20 @@
 //console.log('local index.js loaded')
 
-// parameters being send in through the URL?
+//nextHref = 'https://accounts.google.com/o/oauth2/auth?state=/profile&response_type=token&client_id=219713047770-qllqvhos1i3ll5nv0fgl523erj3479sr.apps.googleusercontent.com&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/fusiontables&redirect_uri=https://dl.dropbox.com/u/4582428/familyhistoryGoogleCode/loginDevJonas.html'
 
+login=function(){
+	loginInfo = document.getElementById('showLoginInfo');
+	if(loginInfo.checked){nextHref+='?detail=yes'}
+	document.location.href=nextHref;
+}
+
+
+
+// parameters being send in through the URL?
 if(location.hash.substring(1).length>0){
-	parms={} , queryString = location.hash.substring(1);
+	parms={} , search={}, queryString = location.hash.substring(1); searchString =  location.search.substring(1);
 	queryString.split('&').map(function(x){return x.split('=')}).map(function(x,i){parms[x[0]]=x[1];return true});
+	searchString.split('&').map(function(x){return x.split('=')}).map(function(x,i){search[x[0]]=x[1];return true});
 	
 	// Display and object's attributes as a list
 	var displayLi=function(x){
@@ -64,4 +74,13 @@ if(location.hash.substring(1).length>0){
 	}
 	sessionStorage.setItem('access_token',parms.access_token); // store access token
 	document.getElementById('familyHistoryButton').disabled=false; // activate family history tool
+	if(!!search.detail){
+		document.getElementById('familyHistoryButton').style.fontSize='large';
+		document.getElementById('login').style.fontSize='small';
+	}
+	else{
+		document.body.innerHTML='<span style="color:red;font-family:Verdana">Loading ...</span>';
+		loadFamilyHistoryTool();
+	}
 }
+
